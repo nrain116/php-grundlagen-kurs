@@ -6,6 +6,10 @@ declare(strict_types=1);
  * 2) Gib einen formatierten Satz aus (HTML + CSS).
  * 3) Bonus: Rechne ein Geburtsjahr aus.
  */
+$name = 'Long';
+$age = 29;
+$city = 'Erfurt';
+$year_of_birth = date("Y") - $age;
 ?>
 <!doctype html>
 <html lang="de">
@@ -19,6 +23,10 @@ declare(strict_types=1);
   <header><h1>Übung 2 – Personeninfo</h1></header>
   <main class="container">
     <!-- TODO -->
+     <p>Name: <?= $name ?></p>
+     <p>Alter: <?= $age ?></p>
+     <p>Stadt: <?= $city ?></p>
+     <p>Geburtsjahr: <?= $year_of_birth ?></p> 
   </main>
 </body>
 </html>
