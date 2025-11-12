@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u eingabe</title>
+</head>
+
+<body>
+    <div>
+        <p>Bitte tragen Sie Ihre Adresse ein.</p>
+        <form action="u_eingabe.php" method="post">
+            <div>
+                <input type="text" name="firstName" id="firstName">
+                <label>Vorname</label>
+            </div>
+            <div>
+                <input type="text" name="lastName" id="lastName">
+                <label>Nachname</label>
+            </div>
+            <div>
+                <input type="text" name="street" id="street">
+                <label>Straße</label>
+            </div>
+            <div>
+                <input type="number" name="plz" id="plz">
+                <label>Postleizahl</label>
+            </div>
+            <div>
+                <input type="text" name="city" id="city">
+                <label>Ort</label>
+            </div>
+            <div>
+                <button type="submit">Senden</button>
+                <button type="reset">Zurücksetzen</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
