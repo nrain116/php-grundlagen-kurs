@@ -8,16 +8,22 @@
 </head>
 
 <body>
+
     <?php
+    $output = '';
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $number = htmlspecialchars($_POST["number"]);
         $pow = pow($number, 2);
-        echo "<p>Das Quadrat von $number ist $pow</p>";
+        $output = "Das Quadrat von $number ist $pow";
     } else {
-        echo "<p>Keine Daten empfangen.</p>";
+        $output = "Keine Daten empfangen.";
     }
     ?>
+
+    <?php if (trim($output)):  ?>
+        <p><?= $output ?></p>
+    <?php endif; ?>
 </body>
 
 </html>

@@ -12,6 +12,7 @@
     <h1>Bewertung Switch</h1>
 
     <?php
+    $output = '';
     for ($punkte = 10; $punkte >= 0; $punkte--) {
         switch ($punkte) {
             case 10:
@@ -30,9 +31,13 @@
                 $erg = "Leider zu wenige Punkte erreicht";
         }
 
-        echo "<p>$punkte Punkte ergeben folgende Bewertung: $erg</p>";
+        $output .= "<p>$punkte Punkte ergeben folgende Bewertung: $erg</P>";
     }
     ?>
+
+    <?= $output ?>
+
+
 </body>
 
 </html>

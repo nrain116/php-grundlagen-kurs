@@ -13,6 +13,7 @@
     <h1>Mit Variablen, Operatoren und Konstanten arbeiten</h1>
     <?php
 
+    $output = '';
     $bezeichnung_tisch = 'Schreibtisch';
     $bezeichnung_stuhl = 'Bürostuhl';
     $bezeichnung_lampe = 'Lampe';
@@ -33,17 +34,19 @@
     $bruttoTisch = $preis_tisch * (1 + $mwst);
 
 
-    echo "Netto-Gesamtpreis der eingekauften Artikel: $gesamtNetto Euro.<br>";
-    echo "Brutto-Gesamtpreis der eingekauften Artikel: $gesamtBrutto Euro.<br>";
+    $output = "Netto-Gesamtpreis der eingekauften Artikel: $gesamtNetto Euro.<br>";
+    $output .= "Brutto-Gesamtpreis der eingekauften Artikel: $gesamtBrutto Euro.<br>";
 
-    echo "<hr>";
+    $output .=  "<hr>";
 
-    echo "Brutto-Preis Schreibtisch: $bruttoTisch Euro<br>";
-    echo "Brutto-Preis Bürostuhl: $bruttoStuhl Euro<br>";
-    echo "Brutto-Preis Schreibtischlampe: $bruttoLampe Euro<br>";
-    echo "Brutto-Preis Computertisch: $bruttoPc Euro<br>";
+    $output .=  "Brutto-Preis Schreibtisch: $bruttoTisch Euro<br>";
+    $output .=  "Brutto-Preis Bürostuhl: $bruttoStuhl Euro<br>";
+    $output .=  "Brutto-Preis Schreibtischlampe: $bruttoLampe Euro<br>";
+    $output .=  "Brutto-Preis Computertisch: $bruttoPc Euro<br>";
 
     ?>
+
+    <?= $output ?>
 </body>
 
 </html>
