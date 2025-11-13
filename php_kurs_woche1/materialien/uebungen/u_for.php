@@ -9,57 +9,60 @@
 
 <body>
     <?php
-
+    $output = '';
     for ($i = 13; $i <= 29; $i += 4) {
-        echo "$i ";
+        $output .= "$i ";
     }
+    echo $output . '<br>';
 
-    echo '<br>';
-
+    $output = '';
     for ($i = 2; $i >= -1; $i -= 0.5) {
-        echo "$i ";
+        $output .= "$i ";
     }
+    echo $output . '<br>';
 
-    echo '<br>';
-
+    $output = '';
     for ($i = 2000; $i <= 6000; $i += 1000) {
-        echo "$i ";
+        $output .= "$i ";
     }
+    echo $output . '<br>';
 
-    echo '<br>';
-
+    $output = '';
     for ($i = 5; $i <= 13; $i += 2) {
-        echo "Z$i ";
+        $output .= "Z$i ";
     }
+    echo $output . '<br>';
 
-    echo '<br>';
-
+    $output = '';
     for ($i = 1; $i <= 3; $i++) {
-        echo "a b$i ";
+        $output .= "a b$i ";
     }
+    echo $output . '<br>';
 
-    echo '<br>';
-    for ($i = 2; $i <= 3; $i++) {
-        echo "c$i ";
-    }
-
-    for ($i = 1; $i <= 2; $i++) {
-        for ($y = 2; $y <= 3; $y++) {
-            echo "c$i$y ";
+    $output = '';
+    for ($i = 0; $i <= 2; $i++) {
+        if ($i == 0) {
+            for ($j = 2; $j <= 3; $j++) {
+                $output .= "c$j ";
+            }
+        } else {
+            for ($y = 2; $y <= 3; $y++) {
+                $output .= "c$i$y ";
+            }
         }
     }
+    echo $output . '<br>';
 
-    echo '<br>';
 
+    $output = '';
     for ($i = 13; $i <= 45; $i += 4) {
         if ($i == 29) {
             continue;
         }
-        echo "$i ";
+        $output .= "$i ";
     }
+    echo $output;
     ?>
-
-
 </body>
 
 </html>
