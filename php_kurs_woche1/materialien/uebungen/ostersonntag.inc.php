@@ -1,10 +1,17 @@
-\(a=J\text{ahr}\quad (\mod 19)\)
-\(b=J\text{ahr}\quad (\mod 4)\)
-\(c=J\text{ahr}\quad (\mod 7)\)
-\(d=(19a+24)\quad (\mod 30)\)
-\(e=(2b+4c+6d+5)\quad (\mod 7)\)
-a b c d e
-10 . 0 . 1 . 4 . 5
+<?php
+function ostersonntag($year)
+{
+    $a = $year % 19;
+    $b = $year % 4;
+    $c = $year % 7;
+    $d = (19 * $a + 24) % 30;
+    $e = (2 * $b + 4 * $c + 6 * $d + 5) % 7;
+    $day = 22 + $d + $e;
 
-
-( 22 + d + e) = 22 + 4 + 5 = 31.03.2024
+    if ($day <= 31) {
+        return sprintf("%02d.03.%d", $day, $year);
+    } else {
+        $day -= 31;
+        return sprintf("%02d.04.%d", $day, $year);
+    }
+}
