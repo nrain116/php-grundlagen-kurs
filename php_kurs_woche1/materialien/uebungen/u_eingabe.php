@@ -10,6 +10,8 @@
 <body>
     <?php
 
+    $output = '';
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $firstName = htmlspecialchars($_POST["firstName"]);
@@ -18,14 +20,15 @@
         $plz       = htmlspecialchars($_POST["plz"]);
         $city      = htmlspecialchars($_POST["city"]);
 
-        echo "<p>Ihr Andresse lautet:</p>";
-        echo "<p>$firstName $lastName</p>";
-        echo "<p>$street</p>";
-        echo "<p>$plz $city</p>";
+        $output = 'Ihr Adresse lautet: <br>';
+        $output .= "$firstName $lastName <br>";
+        $output .= "$street <br>";
+        $output .= "$plz $city <br>";
     } else {
-        echo "<p>Keine Daten empfangen.</p>";
+        $output = "<p>Keine Daten empfangen.</p>";
     }
     ?>
+    <div><?= $output ?></div>
 </body>
 
 </html>
