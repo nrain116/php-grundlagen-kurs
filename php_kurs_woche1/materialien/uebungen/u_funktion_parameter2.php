@@ -12,14 +12,16 @@
 
     function quadrat($num)
     {
-        echo 'Das Quadrat von ' . $num . ' ist ' . pow($num, 2) . '.<br>';
+        $ret =  'Das Quadrat von ' . $num . ' ist ' . pow($num, 2) . '.<br>';
+        return $ret;
     }
 
-    quadrat(3);
-    quadrat(3.2);
-    quadrat(-5);
-    quadrat(83373);
     ?>
+
+    <?= quadrat(3); ?>
+    <?= quadrat(3.2); ?>
+    <?= quadrat(-5); ?>
+    <?= quadrat(83373); ?>
 </body>
 
 </html>
