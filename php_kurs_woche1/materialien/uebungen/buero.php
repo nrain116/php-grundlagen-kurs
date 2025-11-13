@@ -26,10 +26,11 @@
     $gesamtNetto = $preis_lampe + $preis_pctisch + $preis_stuhl + $preis_tisch;
     $gesamtBrutto = ($preis_lampe + $preis_pctisch + $preis_stuhl + $preis_tisch) * 1.19;
 
-    $bruttoLampe = $preis_lampe * 1.19;
-    $bruttoPc = $preis_pctisch * 1.19;
-    $bruttoStuhl = $preis_stuhl * 1.19;
-    $bruttoTisch = $preis_tisch * 1.19;
+    $mwst = 0.19;
+    $bruttoLampe = $preis_lampe * (1 + $mwst);
+    $bruttoPc = $preis_pctisch * (1 + $mwst);
+    $bruttoStuhl = $preis_stuhl * (1 + $mwst);
+    $bruttoTisch = $preis_tisch * (1 + $mwst);
 
 
     echo "Netto-Gesamtpreis der eingekauften Artikel: $gesamtNetto Euro.<br>";

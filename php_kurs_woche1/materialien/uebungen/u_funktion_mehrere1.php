@@ -13,15 +13,18 @@
     function mittel($num1, $num2, $num3)
     {
         $mittelwert = ($num1 + $num2 + $num3) / 3;
-        echo "Der Mittelwert von $num1, $num2 und $num3 ist $mittelwert <br>";
+        $ret = "Der Mittelwert von $num1, $num2 und $num3 ist $mittelwert <br>";
+        return $ret;
     }
 
-    mittel(4, 7, 6);
-    mittel(44, 67.5, 1);
-    mittel(-5, 0, -13);
-    mittel(0.001, 0.0081, 0.0032);
-    mittel(5, 8, 2);
+
     ?>
+
+    <?= mittel(4, 7, 6); ?>
+    <?= mittel(44, 67.5, 1); ?>
+    <?= mittel(-5, 0, -13); ?>
+    <?= mittel(0.001, 0.0081, 0.0032); ?>
+    <?= mittel(5, 8, 2); ?>
 </body>
 
 </html>

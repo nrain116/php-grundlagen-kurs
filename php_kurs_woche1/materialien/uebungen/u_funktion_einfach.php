@@ -14,20 +14,19 @@
 
     function vermerk()
     {
-        echo '<div style="border: 1px solid black padding: 2px margin: 2px">';
-        echo  '<span style="border: 1px solid black ">Dieses Programm wurde geschrieben von Bodo Berg</span>';
-        echo '</div>';
+        $ret =  '<div style="border: 1px solid black padding: 2px margin: 2px">';
+        $ret .=  '<span style="border: 1px solid black ">Dieses Programm wurde geschrieben von Bodo Berg</span>';
+        $ret .= '</div>';
+
+        return $ret;
     }
-
-
-
-    echo 'Anfang des Programms<br>';
-    vermerk();
-    echo 'Mitte des Programms<br>';
-    vermerk();
-    echo 'Ende des Programms';
-
     ?>
+
+    Anfang des Programms <br>
+    <?= vermerk() ?>
+    Mitte des Programms <br>
+    <?= vermerk() ?>
+    Ende des Programms
 </body>
 
 </html>

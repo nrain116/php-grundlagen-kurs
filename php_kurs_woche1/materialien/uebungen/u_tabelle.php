@@ -8,20 +8,19 @@
 </head>
 
 <body>
-    <?php
-    echo '<table style="border: 1px solid black">';
-    for ($i = 1; $i <= 10; $i++) {
-        echo "<tr>";
-        for ($y = 1; $y <= 10; $y++) {
-            $erg = $i * $y;
-            echo '<td style="border: 0.5px solid black">' . $erg . '</td>';
+    <table style="border: 1px solid black">
+        <?php
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            for ($y = 1; $y <= 10; $y++) {
+                $erg = $i * $y;
+                echo '<td style="border: 0.5px solid black">' . $erg . '</td>';
+            }
+            echo "</tr>";
+            echo '<br>';
         }
-        echo "</tr>";
-        echo '<br>';
-    }
-
-    echo '</table>';
-    ?>
+        ?>
+    </table>
 
 </body>
 

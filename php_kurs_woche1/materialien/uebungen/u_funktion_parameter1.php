@@ -12,15 +12,18 @@
 
     function vermerk($name)
     {
-        echo '<div style="display: inline-block; border: 1px solid black; padding: 5px;">';
-        echo '<span style="border: 1px solid black; margin: 5px;">Dieses Programm wurde geschrieben von ' . $name . '</span>';
-        echo '</div>';
-        echo '<br>';
+        $ret = '<div style="display: inline-block; border: 1px solid black; padding: 5px;">';
+        $ret .= '<span style="border: 1px solid black; margin: 5px;">Dieses Programm wurde geschrieben von ' . htmlspecialchars($name) . '</span>';
+        $ret .= '</div>';
+        $ret .= '<br>';
+
+        return $ret;
     }
 
-    vermerk('Bodo Berg');
-    vermerk('Hans Heim');
     ?>
+
+    <?= vermerk('Bodo Berg') ?>
+    <?= vermerk('Hans Heim') ?>
 </body>
 
 </html>

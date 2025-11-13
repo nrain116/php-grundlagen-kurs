@@ -12,18 +12,23 @@
 
     function vermerk($vorname, $nachname, $abteilung)
     {
-        echo '<div style="display: inline-block; border: 1px solid black; padding: 5px;">';
-        echo 'Programmteil von ' . $vorname . ' ' . $nachname . ', Abteilung ' . $abteilung;
-        echo '<br>';
-        echo 'E-Mail: ' . $vorname . '.' . $nachname . '@' . $abteilung . '.phpdevel.de';
-        echo '</div>';
-        echo '<br>';
+        $ret = '<div style="display: inline-block; border: 1px solid black; padding: 5px;">';
+        $ret .= 'Programmteil von ' . $vorname . ' ' . $nachname . ', Abteilung ' . $abteilung;
+        $ret .= '<br>';
+        $ret .= 'E-Mail: ' . $vorname . '.' . $nachname . '@' . $abteilung . '.phpdevel.de';
+        $ret .= '</div>';
+        $ret .= '<br>';
+
+        return $ret;
     }
 
 
-    vermerk('Bodo', 'Berg', 'FE2');
-    vermerk('Hans', 'Heim', 'SU3');
+
+
     ?>
+
+    <?= vermerk('Bodo', 'Berg', 'FE2'); ?>
+    <?= vermerk('Hans', 'Heim', 'SU3'); ?>
 </body>
 
 </html>
