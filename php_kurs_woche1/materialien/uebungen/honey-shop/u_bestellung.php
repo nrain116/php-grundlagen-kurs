@@ -25,9 +25,9 @@ include 'u_form.inc.php';
         <p>Sie haben folgende Menge bestellt:</p>
 
         <?php
-        if (!empty($_POST)) {
+        if (!empty($_SESSION)) {
 
-            foreach ($_POST as $honey => $menge) {
+            foreach ($_SESSION as $honey => $menge) {
 
                 if (!is_numeric($menge)) {
                     continue;

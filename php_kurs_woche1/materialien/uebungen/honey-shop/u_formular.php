@@ -4,6 +4,23 @@ declare(strict_types=1);
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 session_start();
+session_unset();
+session_destroy();
+
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(
+        session_name(),
+        '',
+        time() - 42000, // past time to delete cookie
+        $params["path"],
+        $params["domain"],
+        $params["secure"],
+        $params["httponly"]
+    );
+}
+
+session_start();
 
 include 'u_form.inc.php';
 
@@ -26,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nameAttr = preg_replace('/[^a-zA-Z0-9_]/', '_', $honey);
             $_SESSION[$honey] = (int)($_POST[$nameAttr] ?? 0);
         }
-
         header('Location: u_bestellung.php');
         exit;
     } else {
