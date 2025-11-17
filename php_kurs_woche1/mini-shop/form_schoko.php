@@ -51,12 +51,13 @@ include 'artikel.inc.php';
                     </tr>
 
                 <?php endforeach; ?>
-                <td>
-                <td colspan="4">
-                    <button type="submit" style="margin-bottom: 1rem">In den Warenkorb</button>
-                    <button type="reset" style="background: #dc2626">Abbrechen</button>
-                </td>
-                </td>
+
+                <tr>
+                    <td colspan="4">
+                        <button type="submit" style="margin-bottom: 1rem" name="schoko">In den Warenkorb</button>
+                        <button type="reset" style="background: #dc2626">Abbrechen</button>
+                    </td>
+                </tr>
             </table>
         </form>
     </main>
