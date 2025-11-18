@@ -5,10 +5,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);
 require_once __DIR__ . '/class/Note.php';
 $notes = [
-  new Note('Erster Eintrag', 'OOP macht PHP strukturierter.'),
-  new Note('Zweiter Eintrag', 'Klassen kapseln Daten & Verhalten.')
-]
+  new Note(1, 'Erster Eintrag', 'OOP macht PHP strukturierter.'),
+  new Note(2, 'Zweiter Eintrag', 'Klassen kapseln Daten & Verhalten.'),
+  new Note(3, 'Dritter Eintrag', 'Eigenschaften einer Klasse haben in der Regel die Sichtbarkeit <code>private</code>.')
+];
 
+$newNote = new Note(4, 'Vierter Eintrag', 'Objekte lassen sich klonen');
+
+$clonedNote = clone $newNote;
+
+$copiedNote = Note::makeCopy($newNote, 6, 'Sechster Eintrag', 'Dieser Eintrag wurde kopiert');;
 ?>
 <!doctype html>
 <html lang="de">
@@ -27,11 +33,19 @@ $notes = [
   <main class="container">
     <?php foreach ($notes as $n): ?>
       <article class="post">
-        <h2><?= htmlspecialchars($n->getTitle()) ?></h2>
+        <h2><?= ($n->getNumber()) ?>.) <?= htmlspecialchars($n->getTitle()) ?></h2>
         <p><?= htmlspecialchars($n->getContent()) ?></p>
       </article>
     <?php endforeach; ?>
-  </main>
+
+    <article class="post">
+      <p><?= $notes[0]; ?></p>
+      <p><?= $notes[1]; ?></p>
+      <p><?= $newNote; ?></p>
+      <p><?= $clonedNote; ?></p>
+      <p><?= $copiedNote; ?></p>
+    </article>
+  </main>s
 </body>
 
 </html>
