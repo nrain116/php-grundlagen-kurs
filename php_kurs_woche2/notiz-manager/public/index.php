@@ -22,7 +22,7 @@ ini_set('display_errors', true);
  * 8) class/Note.php
  *    - Klasse für Notizen
  */
-$path = __DIR__ . '/data/notes.json';
+$path = __DIR__ . '/../data/notes.json';
 $notes = is_file($path) ? json_decode((string)file_get_contents($path), true) : [];
 
 ?>
@@ -30,29 +30,29 @@ $notes = is_file($path) ? json_decode((string)file_get_contents($path), true) : 
 <html lang="de">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Übung 5 – Notiz-Manager Light</title>
-  <link rel="stylesheet" href="../style/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Übung 5 – Notiz-Manager Light</title>
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Übung 5 – Notiz-Manager Light</h1>
-  </header>
-  <main class="container">
-    <!-- TODO -->
-    <?php if ($notes): ?>
-      <?php foreach ($notes as $note): ?>
-        <article class="post">
-          <h2><?= htmlspecialchars($note['title']) ?></h2>
-          <p><?= htmlspecialchars($note['content']) ?></p>
-        </article>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <p>Keine Notizen</p>
-    <?php endif; ?>
-  </main>
+    <header>
+        <h1>Übung 5 – Notiz-Manager Light</h1>
+    </header>
+    <main class="container">
+        <!-- TODO -->
+        <?php if ($notes): ?>
+            <?php foreach ($notes as $note): ?>
+                <article class="post">
+                    <h2><?= htmlspecialchars($note['title']) ?></h2>
+                    <p><?= htmlspecialchars($note['content']) ?></p>
+                </article>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Keine Notizen</p>
+        <?php endif; ?>
+    </main>
 </body>
 
 </html>
