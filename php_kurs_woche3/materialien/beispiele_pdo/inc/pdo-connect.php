@@ -1,20 +1,22 @@
 <?php
 
 declare(strict_types=1);
-error_reporting(E_ALL);
-ini_set('display_errors', true);
+
+const DB_USER = 'user';
+const DB_PASSWORD = '123';
+const DB_HOST = 'localhost';
+const DB_NAME = 'notizmanager';
 
 try {
     $pdo = new PDO(
-        'mysql:host=localhost;dbname=notizmanager;charset=utf8mb4',
-        'user',
-        '123',
+        'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
+        DB_USER,
+        DB_PASSWORD,
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
         ]
     );
-    echo 'Verbindung erfolgreich';
 } catch (PDOException $e) {
     echo 'DB-Fehler: ' . htmlspecialchars($e->getMessage());
 }
