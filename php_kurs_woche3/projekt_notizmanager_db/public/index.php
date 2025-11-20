@@ -18,7 +18,7 @@ $notes = getAllNotes($pdo);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notiz-Manager DB</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" type="image/x-icon" href="/icon/asana.svg">
+    <link rel="icon" type="image/svg+xml" href="../icon/anchor.svg">
 
 </head>
 
@@ -69,7 +69,7 @@ $notes = getAllNotes($pdo);
                         <td><?= safe($note->title) ?></td>
                         <td><?= $note->category ?></td>
                         <td><?= safe($note->created_at) ?></td>
-                        <td><?= $note->content ?></td>
+                        <!-- <td><?= $note->content ?></td> -->
                         <td>
                             <a href="edit.php?id=<?= (int)$note->id ?>" class="button">Bearbeiten</a>
                         </td>

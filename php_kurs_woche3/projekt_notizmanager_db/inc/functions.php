@@ -19,3 +19,14 @@ function safe(string $s): string
 {
     return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
+
+
+function addNote(PDO $pdo, string $title, string $content, ?int $catId = null): void
+{
+    $stmt = $pdo->prepare('INSERT INTO notes(title, content, category_id) VALUES (:t, :c, :cat)');
+    $stmt->execute([
+        ':t'    => $title,
+        ':c'    => $content,
+        ':cat'  => $catId
+    ]);
+}
