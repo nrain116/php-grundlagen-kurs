@@ -72,6 +72,10 @@ $notes = getAllNotes($pdo);
                         <!-- <td><?= $note->content ?></td> -->
                         <td>
                             <a href="edit.php?id=<?= (int)$note->id ?>" class="button">Bearbeiten</a>
+                            <form action="delete.php" style="display:inline" method="post">
+                                <input type="hidden" name="id" value="<?= (int)$note->id ?>">
+                                <button type="submit" class="text-danger">Löschen</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -6,3 +6,12 @@ ini_set('display_errors', true);
 
 require_once __DIR__ . '/../inc/db-connect.php';
 require_once __DIR__ . '/../inc/functions.php';
+
+$id = (int)($_POST['id'] ?? 0);
+
+if ($id) {
+    deleteNote($pdo, $id);
+}
+
+header('Location: index.php');
+exit;
