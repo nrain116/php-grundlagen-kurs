@@ -30,3 +30,11 @@ function addNote(PDO $pdo, string $title, string $content, ?int $catId = null): 
         ':cat'  => $catId
     ]);
 }
+
+function findNote(PDO $pdo, int $id): ?object
+{
+    $stmt = $pdo->prepare('SELECT * FROM notes WHERE id=:id');
+    $stmt->execute([':id' => $id]);
+    $row = $stmt->fetch();
+    return $row ?: null;
+}
