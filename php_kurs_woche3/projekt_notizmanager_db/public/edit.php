@@ -1,5 +1,5 @@
 <?php
-
+$pageTitle = 'Edit - Notiz-Manager';
 include_once 'header.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] :  0;

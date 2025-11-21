@@ -2,27 +2,59 @@
 
 declare(strict_types=1);
 
-function getAllNotes(PDO $pdo): array
+function getAllNotes(PDO $pdo, ?int $userId = null): array
 {
-    $sql = 'SELECT n.id, n.title, n.content, n.created_at, c.name AS category
-    FROM notes n
-    LEFT JOIN categories c
-      ON c.id = n.category_id
-    ORDER BY n.id DESC';
+    // Root → get ALL notes
+    if ($userId === null) {
+        $sql = 'SELECT n.id, n.title, n.content, n.created_at,
+                       n.user_id, u.username AS author,
+                       c.name AS category
+                FROM notes n
+                LEFT JOIN categories c ON c.id = n.category_id
+                LEFT JOIN users u ON u.id = n.user_id
+                ORDER BY n.id DESC';
 
-    return $pdo->query($sql)->fetchAll();
+        return $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Normal user → only own notes
+    $sql = 'SELECT n.id, n.title, n.content, n.created_at,
+                   n.user_id, u.username AS author,
+                   c.name AS category
+            FROM notes n
+            LEFT JOIN categories c ON c.id = n.category_id
+            LEFT JOIN users u ON u.id = n.user_id
+            WHERE n.user_id = :user_id
+            ORDER BY n.id DESC';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['user_id' => $userId]);
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
+
+
+
+
+
 
 function safe(string $s): string
 {
     return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-function addNote(PDO $pdo, string $title, string $content, ?int $categoryId = null): void
+function addNote(PDO $pdo, string $title, string $content, int $userId, ?int $categoryId = null): void
 {
-    $stmt = $pdo->prepare('INSERT INTO notes(title, content, category_id) VALUES (:t, :c, :cat)');
-    $stmt->execute([':t' => $title, ':c' => $content, ':cat' => $categoryId]);
+    $stmt = $pdo->prepare('INSERT INTO notes(title, content, category_id, user_id) 
+                           VALUES (:t, :c, :cat, :u)');
+    $stmt->execute([
+        ':t' => $title,
+        ':c' => $content,
+        ':cat' => $categoryId,
+        ':u' => $userId
+    ]);
 }
+
 
 function findNote(PDO $pdo, int $id): ?object
 {
@@ -107,4 +139,26 @@ function require_login(): void
         header('Location: login.php');
         exit;
     }
+}
+
+/* get userID */
+function getUserId(PDO $pdo): ?int
+{
+    if (!is_logged_in()) {
+        return null; // no user logged in
+    }
+
+    $stmt = $pdo->prepare('SELECT id FROM users WHERE username = :username LIMIT 1');
+    $stmt->execute([
+        ':username' => $_SESSION['user']
+    ]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $user ? (int)$user['id'] : null;
+}
+
+function is_root(): bool
+{
+    return isset($_SESSION['user']) && $_SESSION['user'] === 'root';
 }

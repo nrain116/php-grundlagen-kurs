@@ -1,5 +1,5 @@
 <?php
-
+$pageTitle = 'Kategorien - Notiz-Manager';
 include_once 'header.php';
 require_login();
 $categs = getAllCategories($pdo);

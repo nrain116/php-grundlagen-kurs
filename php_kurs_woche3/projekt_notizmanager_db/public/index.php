@@ -1,9 +1,21 @@
 <?php
 
+
+
 include_once __DIR__ . '/header.php';
 
+$pageTitle = 'Hallo - Notiz-Manager';
 
-$notes = getAllNotes($pdo);
+$user_id = getUserId($pdo);
+
+if (is_root()) {
+    $notes = getAllNotes($pdo);
+} else {
+    $notes = getAllNotes($pdo, $user_id);
+}
+
+
+// echo '<pre>', var_dump($_SESSION), '</pre>';
 ?>
 
 <main class="container">
@@ -37,6 +49,7 @@ $notes = getAllNotes($pdo);
                         <th>Title</th>
                         <th>Kategorie</th>
                         <th>Datum</th>
+                        <th>Author</th>
                         <th>Aktionen</th>
                     </tr>
                 </thead>
@@ -45,7 +58,9 @@ $notes = getAllNotes($pdo);
                         <td><?= safe($note->title) ?></td>
                         <td><?= $note->category ?></td>
                         <td><?= safe($note->created_at) ?></td>
-                        <!-- <td><?= $note->content ?></td> -->
+                        <?php if (is_root()): ?>
+                            <td><?= $note->author ?></td>
+                        <?php endif; ?>
                         <td>
                             <a href="edit.php?id=<?= (int)$note->id ?>" class="inline-btn">Bearbeiten</a>
                             <form action="delete.php" method="post" style="display:inline-block; margin-left:6px;">
