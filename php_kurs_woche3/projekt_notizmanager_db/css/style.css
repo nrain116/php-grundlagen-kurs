@@ -101,3 +101,34 @@ td {
     border-bottom: 1px solid var(--border);
     text-align: left
 }
+
+.inline-btn,
+.inline-btn:visited {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #337ab7;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.2;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Remove button-specific browser defaults */
+.inline-btn.button-reset,
+button.inline-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: #337ab7;
+    margin: 0;
+    font-family: inherit;
+}
+
+/* Delete button variant */
+.inline-btn.delete {
+    background: #d9534f;
+}

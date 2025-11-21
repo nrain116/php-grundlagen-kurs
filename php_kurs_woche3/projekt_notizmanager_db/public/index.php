@@ -71,10 +71,10 @@ $notes = getAllNotes($pdo);
                         <td><?= safe($note->created_at) ?></td>
                         <!-- <td><?= $note->content ?></td> -->
                         <td>
-                            <a href="edit.php?id=<?= (int)$note->id ?>" class="button">Bearbeiten</a>
-                            <form action="delete.php" style="display:inline" method="post">
+                            <a href="edit.php?id=<?= (int)$note->id ?>" class="inline-btn">Bearbeiten</a>
+                            <form action="delete.php" method="post" style="display:inline-block; margin-left:6px;">
                                 <input type="hidden" name="id" value="<?= (int)$note->id ?>">
-                                <button type="submit" class="text-danger">Löschen</button>
+                                <button type="submit" class="inline-btn delete button-reset">Löschen</button>
                             </form>
                         </td>
                     </tr>
