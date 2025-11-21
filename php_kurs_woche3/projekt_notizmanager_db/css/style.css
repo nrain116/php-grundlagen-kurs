@@ -376,3 +376,35 @@ button.inline-btn {
 .inline-btn.delete {
     background: #d9534f;
 }
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.card summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    /* removes default arrow in some browsers */
+}
+
+.card summary::-webkit-details-marker {
+    display: none;
+    /* remove default triangle in Chrome/Safari */
+}
+
+.card summary::before {
+    content: "▶ ";
+    /* arrow symbol when collapsed */
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.card[open] summary::before {
+    transform: rotate(90deg);
+    /* rotate arrow when open */
+}

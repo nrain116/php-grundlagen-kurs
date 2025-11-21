@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 function getAllNotes(PDO $pdo, ?int $userId = null): array
 {
-    // Root → get ALL notes
     if ($userId === null) {
+        // Admin → get ALL notes with author
         $sql = 'SELECT n.id, n.title, n.content, n.created_at,
                        n.user_id, u.username AS author,
                        c.name AS category
@@ -17,13 +17,12 @@ function getAllNotes(PDO $pdo, ?int $userId = null): array
         return $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // Normal user → only own notes
+    // Normal user → only own notes, no author
     $sql = 'SELECT n.id, n.title, n.content, n.created_at,
-                   n.user_id, u.username AS author,
+                   n.user_id,
                    c.name AS category
             FROM notes n
             LEFT JOIN categories c ON c.id = n.category_id
-            LEFT JOIN users u ON u.id = n.user_id
             WHERE n.user_id = :user_id
             ORDER BY n.id DESC';
 
@@ -32,11 +31,6 @@ function getAllNotes(PDO $pdo, ?int $userId = null): array
 
     return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
-
-
-
-
-
 
 function safe(string $s): string
 {

@@ -6,13 +6,16 @@ $categs = getAllCategories($pdo);
 ?>
 
 <main class="container">
-    <section class="card">
-        <h2>Neue Kategorie</h2>
+    <details class="card">
+        <summary>Neue Kategorie</summary>
         <form action="categories/add.php" method="post">
-            <label>Kategorie-Name <input type="text" name="name" required></label>
+            <label>
+                Kategorie-Name <input type="text" name="name" required>
+            </label>
             <button type="submit">Speichern</button>
         </form>
-    </section>
+    </details>
+
 
     <section class="card">
         <h2>Einträge</h2>

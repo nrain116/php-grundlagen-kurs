@@ -7,7 +7,6 @@ include_once __DIR__ . '/header.php';
 $pageTitle = 'Hallo - Notiz-Manager';
 
 $user_id = getUserId($pdo);
-
 $notes = fetchNotesForUser($pdo, $user_id);
 
 // echo '<pre>', var_dump($_SESSION), '</pre>';
@@ -15,8 +14,8 @@ $notes = fetchNotesForUser($pdo, $user_id);
 
 <main class="container">
     <?php if (is_logged_in()): ?>
-        <section class="card">
-            <h2>Neue Notiz</h2>
+        <details class="card">
+            <summary>Neue Notiz</summary>
             <form action="add.php" method="post">
                 <label>
                     Titel <input type="text" name="title" required>
@@ -35,7 +34,8 @@ $notes = fetchNotesForUser($pdo, $user_id);
                 </label>
                 <button type="submit">Speichern</button>
             </form>
-        </section>
+        </details>
+
         <section class="card">
             <h2>Einträge</h2>
             <table>
