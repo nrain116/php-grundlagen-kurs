@@ -21,7 +21,7 @@ if (!$category) {
         <label>Kategorie-Name <input type="text" name="name" value="<?= safe($category->name) ?>" required></label>
         <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
             <button type="submit">Speichern</button>
-            <a href="../categ-manager.php" class="button" style="text-decoration: none; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; background: #f0f0f0; color: #333;">Abbrechen</a>
+            <a href="../categ-manager.php" class="inline-btn delete">Abbrechen</a>
         </div>
     </form>
 </main>
