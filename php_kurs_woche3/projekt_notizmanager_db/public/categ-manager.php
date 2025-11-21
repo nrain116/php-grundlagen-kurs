@@ -1,8 +1,7 @@
 <?php
 
-
 include_once 'header.php';
-
+require_login();
 $categs = getAllCategories($pdo);
 ?>
 

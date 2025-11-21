@@ -28,6 +28,7 @@ require_once __DIR__ . '/../inc/functions.php';
 
 
     <!-- Example icon -->
+    <link rel="icon" type="image/svg+xml" href="<?= $path ?>../icon/anchor.svg">
 </head>
 
 <body>
