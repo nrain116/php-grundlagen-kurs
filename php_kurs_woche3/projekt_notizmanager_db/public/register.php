@@ -26,42 +26,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$username]);
         $existing = $stmt->fetch();
 
-        if ($existing) {
-            $error = 'Der Benutzername ist bereits vergeben!';
-        } else {
-            // Benutzer anlegen
+        if (!$existing) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-
             $stmt = $pdo->prepare('INSERT INTO users (username, password_hash) VALUES (?, ?)');
-            $stmt->execute([$username, $hash]);
+            if ($stmt->execute([$username, $hash])) {
+                $_SESSION['user'] = $username;
+                header('Location: ' . $path . 'index.php');
+                exit;
+            } else {
+                $error = 'Beim Anlegen des Benutzers ist ein Fehler aufgetreten!';
+            }
         }
-
-        // direkt einloggen
-        $_SESSION['user'] = $username;
-
-        header('Location: ' . $path . 'index.php');
-        exit;
     }
 }
 ?>
 
 <main class="container">
-
-    <?php if ($error): ?>
-        <p class="alert"><?= safe($error) ?></p>
-    <?php endif; ?>
-
-    <form action="<?= $_SERVER['SCRIPT_NAME']; ?>" method="post">
-        <label>Benutzername:
-            <input type="text" name="username" required value="<?= safe($username) ?>">
-        </label>
-        <label>Passwort:
-            <input type="password" name="password" required>
-        </label>
-        <label>Passwort wiederholen:
-            <input type="password" name="password_repeat" required>
-        </label>
-        <button type="submit">Registrieren</button>
-    </form>
-
+    <section class="card">
+        <?php if ($error): ?>
+            <p class="alert"><?= safe($error) ?></p>
+        <?php endif; ?>
+        <h2>Neue Benutzer registrieren!</h2>
+        <form action="<?= $_SERVER['SCRIPT_NAME']; ?>" method="post">
+            <label>Benutzername:
+                <input type="text" name="username" required value="<?= safe($username) ?>">
+            </label>
+            <label>Passwort:
+                <input type="password" name="password" required>
+            </label>
+            <label>Passwort wiederholen:
+                <input type="password" name="password_repeat" required>
+            </label>
+            <button type="submit">Registrieren</button>
+        </form>
+    </section>
 </main>
