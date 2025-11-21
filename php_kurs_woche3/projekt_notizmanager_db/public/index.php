@@ -8,12 +8,7 @@ $pageTitle = 'Hallo - Notiz-Manager';
 
 $user_id = getUserId($pdo);
 
-if (is_root()) {
-    $notes = getAllNotes($pdo);
-} else {
-    $notes = getAllNotes($pdo, $user_id);
-}
-
+$notes = fetchNotesForUser($pdo, $user_id);
 
 // echo '<pre>', var_dump($_SESSION), '</pre>';
 ?>

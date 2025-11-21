@@ -162,3 +162,12 @@ function is_root(): bool
 {
     return isset($_SESSION['user']) && $_SESSION['user'] === 'root';
 }
+
+function fetchNotesForUser($pdo, $user_id)
+{
+    if (is_root()) {
+        return getAllNotes($pdo);
+    } else {
+        return getAllNotes($pdo, $user_id);
+    }
+}
