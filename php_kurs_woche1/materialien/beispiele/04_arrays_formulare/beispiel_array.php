@@ -48,7 +48,7 @@ $laender = array(
     'Waehrung' => 'Pfund Sterlin',
     'Flaeche' => 130321
   ),
-  'Portuugal' => array(
+  'Portugal' => array(
     'Hauptstadt' => 'Lissabon',
     'Sprache' => 'portugesisch',
     'Waehrung' => 'Euro',

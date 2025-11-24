@@ -16,7 +16,6 @@ $categs = getAllCategories($pdo);
         </form>
     </details>
 
-
     <section class="card">
         <h2>Einträge</h2>
         <table>
