@@ -34,7 +34,7 @@
 
    $results = [];
    for ($jahr = $anfang; $jahr <= $ende; $jahr++) {
-      ostersonntag($jahr, $tag, $monat);  // Referenzen!
+      ostersonntag($jahr, $tag, $monat);  // Referenzen
 
       $results[] = [
          'jahr'  => $jahr,
