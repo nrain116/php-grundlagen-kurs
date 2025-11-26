@@ -41,7 +41,43 @@ function deleteHardware(PDO $pdo, string $artnr): void
 }
 
 
-function seachHardWare(PDO $pdo, ?string $artnummer, ?string $hersteller, ?string $typ,  ?int $gb, ?float $preis, ?string $date)
+function searchHardware(PDO $pdo, ?string $artnummer, ?string $hersteller, ?string $typ, ?int $gb, ?float $preis, ?string $prod): array
 {
-    $stmt = $pdo->prepare('SELECT *  FROM fp WHERE ');
+    $sql = "SELECT * FROM fp";
+    $conditions = [];
+    $params = [];
+
+    if ($artnummer) {
+        $conditions[] = "artnummer = :artnummer";
+        $params[':artnummer'] = $artnummer;
+    }
+    if ($hersteller) {
+        $conditions[] = "hersteller = :hersteller";
+        $params[':hersteller'] = $hersteller;
+    }
+    if ($typ) {
+        $conditions[] = "typ = :typ";
+        $params[':typ'] = $typ;
+    }
+    if ($gb) {
+        $conditions[] = "gb = :gb";
+        $params[':gb'] = $gb;
+    }
+    if ($preis) {
+        $conditions[] = "preis = :preis";
+        $params[':preis'] = $preis;
+    }
+    if ($prod) {
+        $conditions[] = "prod = :prod";
+        $params[':prod'] = $prod;
+    }
+
+    if ($conditions) {
+        $sql .= " WHERE " . implode(" AND ", $conditions);
+    }
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetchAll(PDO::FETCH_OBJ); // FETCH_OBJ gives objects
 }

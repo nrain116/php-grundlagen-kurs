@@ -11,14 +11,15 @@ require_once __DIR__ . '/../inc/functions.php';
 
 $artnummer = trim($_POST['artnummer'] ?? '');
 $hersteller = trim($_POST['hersteller'] ?? '');
-$typ = $_POST['typ'] ?? '';
-$gb = (int)$_POST['gb'] ?? 0;
-$preis = (float)$_POST['preis'] ?? 0.0;
-$prod = $_POST['prod'] ?? '';
+$typ = trim($_POST['typ'] ?? '');
+$gb = (int)($_POST['gb'] ?? 0);
+$preis = (float)($_POST['preis'] ?? 0.0);
+$prod = trim($_POST['prod'] ?? '');
 
-
-if ($artnummer !== '') {
-    searchHardware($pdo, $artnummer, $hersteller, $typ, $gb, $preis, $prod);
+if ($artnummer || $hersteller || $typ || $gb || $preis || $prod) {
+    $hardware = searchHardware($pdo, $artnummer, $hersteller, $typ, $gb, $preis, $prod);
+} else {
+    $hardware = fetchNotes($pdo);
 }
 
 
