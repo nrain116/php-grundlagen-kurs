@@ -77,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Klick mich ! 👈
         </summary>
 
-
         <section class="card" style="margin: 0; padding: 10px;">
             <form action="" method="post" enctype="multipart/form-data">
                 <label>Kategorie:</label>
@@ -111,45 +110,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
     </details>
     <?php if ($_SESSION): ?>
-
-        <table style="
+        <section class="card" style="padding: 1rem 2.3rem; width: 70%; margin: 0 auto;">
+            <table style="
                 margin: 0 auto;
                 width: 70%;
                 border-collapse: collapse;
                 font-size: 0.95rem;
             ">
-            <thead>
-                <tr>
-                    <th style="padding: 10px; text-align: center; width: 120px;">Titel</th>
-                    <th style="padding: 10px; text-align: center; width: 120px;">Kategorie</th>
-                    <th style="padding: 10px; text-align: center; width: 120px;">Aktion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($posts as $p): ?>
-                    <tr style="border-bottom: 1px solid #ddd;">
-                        <td class="table-single-line">
-                            <a href="post_single.php?id=<?= $p->posts_id ?>"
-                                style="text-decoration: none; color: #2a7fde;">
-                                <?= htmlspecialchars($p->posts_header) ?>
-                            </a>
-                        </td>
-                        <td class="table-single-line">
-                            <?= fetchCategoryName($pdo, $p->posts_categ_id_ref) ?>
-                        </td>
-                        <td style="padding: 6px; text-align: center; white-space: nowrap;">
-
-                            <!-- Edit button -->
-                            <a href="post_edit.php?id=<?= $p->posts_id ?>" class="post-edit-btn">✎</a>
-                            <form action="inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
-                                onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
-                                <input type="hidden" name="postId" value="<?= $p->posts_id ?>">
-                                <button type="submit" class="post-delete-btn">🗑</button>
-                            </form>
-                        </td>
+                <thead>
+                    <tr>
+                        <th style="padding: 10px; text-align: center; width: 120px;">Titel</th>
+                        <th style="padding: 10px; text-align: center; width: 120px;">Kategorie</th>
+                        <th style="padding: 10px; text-align: center; width: 120px;">Aktion</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($posts as $p): ?>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td class="table-single-line">
+                                <a href="post_single.php?id=<?= $p->posts_id ?>"
+                                    style="text-decoration: none; color: #2a7fde;">
+                                    <?= htmlspecialchars($p->posts_header) ?>
+                                </a>
+                            </td>
+                            <td class="table-single-line">
+                                <?= fetchCategoryName($pdo, $p->posts_categ_id_ref) ?>
+                            </td>
+                            <td style="padding: 6px; text-align: center; white-space: nowrap;">
+
+                                <!-- Edit button -->
+                                <a href="post_edit.php?id=<?= $p->posts_id ?>" class="post-edit-btn">✎</a>
+                                <form action="inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
+                                    onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
+                                    <input type="hidden" name="postId" value="<?= $p->posts_id ?>">
+                                    <button type="submit" class="post-delete-btn">🗑</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </section>
     <?php endif; ?>
 </main>

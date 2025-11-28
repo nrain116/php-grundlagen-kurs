@@ -50,45 +50,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </section>
     </details>
-
-    <table style="
+    <section class="card" style="padding: 1rem 2.3rem; width: 70%; margin: 0 auto;">
+        <table style="
                 margin: 0 auto;
                 width: 70%;
                 border-collapse: collapse;
                 font-size: 0.95rem;
             ">
-        <thead>
-            <tr>
-                <th style="padding: 10px; text-align: center; width: 120px">Kategorie</th>
-                <th style="padding: 10px; text-align: center; width: 120px">Beschreibung</th>
-                <th style="padding: 10px; text-align: center; width: 120px;">Aktion</th>
-            </tr>
-        </thead>
-        <?php foreach ($cats as $cat): ?>
-            <tr style="border-bottom: 1px solid #ddd;">
-                <td class="table-single-line"><?= htmlspecialchars($cat->categ_name) ?></td>
-                <td class="table-single-line"><?= htmlspecialchars($cat->categ_desc) ?></td>
+            <thead>
+                <tr>
+                    <th style="padding: 10px; text-align: center; width: 120px">Kategorie</th>
+                    <th style="padding: 10px; text-align: center; width: 120px">Beschreibung</th>
+                    <th style="padding: 10px; text-align: center; width: 120px;">Aktion</th>
+                </tr>
+            </thead>
+            <?php foreach ($cats as $cat): ?>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td class="table-single-line"><?= htmlspecialchars($cat->categ_name) ?></td>
+                    <td class="table-single-line"><?= htmlspecialchars($cat->categ_desc) ?></td>
 
-                <td style="padding: 6px; text-align: center; white-space: nowrap;">
+                    <td style="padding: 6px; text-align: center; white-space: nowrap;">
 
-                    <!-- Edit button -->
-                    <a href="cat_edit.php?id=<?= $cat->categ_id ?>" class="post-edit-btn">
-                        ✎
-                    </a>
+                        <!-- Edit button -->
+                        <a href="cat_edit.php?id=<?= $cat->categ_id ?>" class="post-edit-btn">
+                            ✎
+                        </a>
 
-                    <!-- Delete button -->
-                    <form action="../inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
-                        onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
-                        <input type="hidden" name="catId" value="<?= $cat->categ_id ?>">
-                        <button type="submit" class="post-delete-btn">
-                            🗑
-                        </button>
-                        <input type="hidden" name="catId" value="<?= $cat->categ_id ?>">
-                    </form>
+                        <!-- Delete button -->
+                        <form action="../inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
+                            onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
+                            <input type="hidden" name="catId" value="<?= $cat->categ_id ?>">
+                            <button type="submit" class="post-delete-btn">
+                                🗑
+                            </button>
+                            <input type="hidden" name="catId" value="<?= $cat->categ_id ?>">
+                        </form>
 
-                </td>
-            </tr>
-        <?php endforeach; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
 
-    </table>
+        </table>
+    </section>
 </main>
