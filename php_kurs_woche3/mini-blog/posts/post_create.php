@@ -72,29 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="success"><?= htmlspecialchars($success) ?></div>
     <?php endif; ?>
 
-    <details style="
-        width:70%;
-        margin: 0 auto 20px auto; /* center to match table */
-        border: 1px solid #ddd; 
-        border-radius: 6px; 
-        padding: 0; /* remove inner padding to match table width */
-        background-color: #f9f9f9;
-        font-size: 0.95rem;
-    ">
-        <summary style="
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 1.2rem; 
-            padding: 8px 12px; 
-            border-bottom: 1px solid #ddd;
-            background-color: #FFFFFF; 
-            color: white; 
-            border-top-left-radius: 6px;
-            border-top-right-radius: 6px;
-            text-align: center;
-            display: block; /* makes text-align work */
-            color: black;
-        ">
+    <details class="custom-details">
+        <summary>
             Klick mich ! 👈
         </summary>
 
@@ -149,58 +128,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <tbody>
                 <?php foreach ($posts as $p): ?>
                     <tr style="border-bottom: 1px solid #ddd;">
-                        <td style="padding: 10px; text-align: center;">
+                        <td class="table-single-line">
                             <a href="post_single.php?id=<?= $p->posts_id ?>"
                                 style="text-decoration: none; color: #2a7fde;">
                                 <?= htmlspecialchars($p->posts_header) ?>
                             </a>
                         </td>
-                        <td style="padding: 10px; text-align: center;">
+                        <td class="table-single-line">
                             <?= fetchCategoryName($pdo, $p->posts_categ_id_ref) ?>
                         </td>
                         <td style="padding: 6px; text-align: center; white-space: nowrap;">
 
                             <!-- Edit button -->
-                            <a href="post_edit.php?id=<?= $p->posts_id ?>"
-                                style="
-                       display: inline-flex;
-                       justify-content: center;
-                       align-items: center;
-                       width: 28px;
-                       height: 28px;
-                       font-size: 1rem;
-                       background-color: #007bff;
-                       color: white;
-                       border-radius: 4px;
-                       text-decoration: none;
-                       margin-right: 4px;
-                   ">
-                                ✎
-                            </a>
-
-                            <!-- Delete button -->
+                            <a href="post_edit.php?id=<?= $p->posts_id ?>" class="post-edit-btn">✎</a>
                             <form action="inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
                                 onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
                                 <input type="hidden" name="postId" value="<?= $p->posts_id ?>">
-                                <button type="submit"
-                                    style="
-                            display: inline-flex;
-                            justify-content: center;
-                            align-items: center;
-                            width: 28px;
-                            height: 28px;
-                            font-size: 1rem;
-                            background-color: #d9534f;
-                            color: white;
-                            border: none;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            padding: 0;
-                        ">
-                                    🗑
-                                </button>
+                                <button type="submit" class="post-delete-btn">🗑</button>
                             </form>
-
                         </td>
                     </tr>
                 <?php endforeach; ?>

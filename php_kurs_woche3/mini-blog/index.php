@@ -33,7 +33,6 @@ foreach ($posts as $post) {
     <?php if ($_SESSION): ?>
         <p>Hallo <b><?= $user->users_forename ?></b>, willkommen zu deinem Blog!</p>
 
-
     <?php else: ?>
         <p> Einloggen und dein Mini-Blog starten</p>
     <?php endif; ?>

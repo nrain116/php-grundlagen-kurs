@@ -27,7 +27,7 @@ require_once __DIR__ . '/functions.inc.php';
 
 
     <!-- Example icon -->
-    <link rel="icon" type="image/svg+xml" href="<?= BASE_URL ?>../icon/hardware.svg">
+    <link rel="icon" type="image/svg+xml" href="<?= BASE_URL ?>icons/blog.svg">
 </head>
 
 <body>
