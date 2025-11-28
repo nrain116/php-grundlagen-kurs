@@ -444,13 +444,13 @@ button.inline-btn {
 .post-row {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
-    /* do not stretch meta to image height */
+    align-items: stretch;
+    height: 120px;
+    /* stretch children to row height */
 }
 
 .post-meta {
     flex: 0 0 300px;
-    /* fixed width */
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -461,35 +461,44 @@ button.inline-btn {
     background-color: #fdfdfd;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 
-    height: 110px;
-    /* fixed height */
-    overflow: hidden;
-    /* prevent content overflow */
+    height: auto;
+    /* height determined by content */
+}
+
+.post-spacer {
+    flex: 1;
+    /* fill remaining horizontal space */
+    display: flex;
+    justify-content: center;
+    /* horizontal centering of image */
+    align-items: center;
+    /* vertical centering of image */
+    height: 100%;
+    /* match .post-meta height */
 }
 
 .post-image-wrapper {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    /* vertically center image */
-    justify-content: center;
-    margin-left: auto;
-    /* push to far right */
     max-width: 150px;
-    height: 110px;
-    /* match the height of .post-meta */
+    /* limit width */
+    max-height: 100%;
+    /* never exceed spacer height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* fill spacer height */
 }
 
 .post-image-wrapper img {
     height: 100%;
-    /* fill wrapper height = 110px */
+    /* fill wrapper height */
     width: auto;
-    /* maintain aspect ratio */
-    max-width: 100%;
-    /* prevent overflow horizontally */
+    /* keep aspect ratio */
     object-fit: contain;
     display: block;
 }
+
+
 
 .post-content {
     text-align: justify;
@@ -606,33 +615,27 @@ button.inline-btn {
     background-color: #f9f9f9;
 }
 
-html {
+/* html {
     height: 100%;
     background-image: url("../asset/background.jpg");
-    /* update */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* optional */
 }
 
 body {
     height: 100%;
     background: transparent;
-    /* make sure body doesn’t hide html background */
     margin: 0;
     padding: 0;
 }
 
 header {
     background-image: url("../asset/header.jpg");
-    /* change file */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 10px 0;
-    /* space inside header */
     color: white;
-    /* optional */
-}
+} */

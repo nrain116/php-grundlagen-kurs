@@ -47,9 +47,6 @@ foreach ($posts as $post) {
             <article>
                 <div style="padding-bottom: 0.5rem; padding-left:0.5rem;"><strong><?= htmlspecialchars($post->posts_header) ?></strong></div>
                 <div class="post-row">
-                    <!-- Left content: header + meta -->
-
-
                     <div class="post-meta <?= $borderClass ?>">
                         <small>
                             Autor: <?= htmlspecialchars($_SESSION['email'] ?? 'Unbekannt') ?><br>
@@ -59,32 +56,18 @@ foreach ($posts as $post) {
                         </small>
                     </div>
 
-                    <!-- Right image -->
                     <?php if (!empty($post->posts_image)): ?>
-                        <div class="post-image-wrapper">
-                            <img src="<?= BASE_URL . 'images/' . htmlspecialchars($post->posts_image) ?>"
-                                alt="Post-Bild">
+                        <div class="post-spacer">
+                            <div class="post-image-wrapper">
+                                <img src="<?= BASE_URL . 'images/' . htmlspecialchars($post->posts_image) ?>" alt="Post-Bild">
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>
-
                 <p class="post-content"><?= nl2br(htmlspecialchars($post->posts_content)) ?></p>
             </article>
 
-            <a href="posts/post_edit.php?id=<?= $post->posts_id ?>"
-                style="
-                       display: inline-flex;
-                       justify-content: center;
-                       align-items: center;
-                       width: 28px;
-                       height: 28px;
-                       font-size: 1rem;
-                       background-color: #007bff;
-                       color: white;
-                       border-radius: 4px;
-                       text-decoration: none;
-                       margin-right: 4px;
-                   ">
+            <a href="posts/post_edit.php?id=<?= $post->posts_id ?>" class="post-edit-btn">
                 ✎
             </a>
 
@@ -92,21 +75,7 @@ foreach ($posts as $post) {
             <form action="inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
                 onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
                 <input type="hidden" name="postId" value="<?= $post->posts_id ?>">
-                <button type="submit"
-                    style="
-                            display: inline-flex;
-                            justify-content: center;
-                            align-items: center;
-                            width: 28px;
-                            height: 28px;
-                            font-size: 1rem;
-                            background-color: #d9534f;
-                            color: white;
-                            border: none;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            padding: 0;
-                        ">
+                <button type="submit" class="post-delete-btn">
                     🗑
                 </button>
             </form>
