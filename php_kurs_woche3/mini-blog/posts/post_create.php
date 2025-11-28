@@ -13,6 +13,8 @@ $error = '';
 $success = '';
 $userId = getUserId($pdo, $_SESSION['email'] ?? '');
 $cats = fetchCategories($pdo);
+
+
 $posts = fetchPosts($pdo);
 
 $upload_dir = __DIR__ . '/../images/';

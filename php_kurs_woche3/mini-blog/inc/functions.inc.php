@@ -22,12 +22,29 @@ function getUserId(PDO $pdo, string $email): ?int
     return $row ? (int)$row['users_id'] : null;
 }
 
+function fetchUser(PDO $pdo, int $id): ?stdClass
+{
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE users_id = :i');
+    $stmt->execute([':i' => $id]);
+    $user = $stmt->fetch(PDO::FETCH_OBJ); // fetch as object
+    return $user ?: null; // return null if not found
+}
+
+
+
 function fetchPost(PDO $pdo, int $id): ?stdClass
 {
     $stmt = $pdo->prepare('SELECT * FROM posts WHERE posts_id = :i');
     $stmt->execute([':i' => $id]);
     $post = $stmt->fetch(PDO::FETCH_OBJ); // fetch as object
     return $post ?: null; // return null if not found
+}
+
+function fetchPostFromUser(PDO $pdo, int $id): array
+{
+    $stmt = $pdo->prepare('SELECT * FROM posts WHERE posts_users_id_ref = :i ORDER BY posts_created_at DESC');
+    $stmt->execute([':i' => $id]);
+    return $stmt->fetchAll(PDO::FETCH_OBJ); // return array of objects
 }
 
 function fetchPosts(PDO $pdo): array

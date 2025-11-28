@@ -50,3 +50,7 @@ Auf der Startseite werden daher zusätzlich angezeigt:
 Beim Erstellen/Bearbeiten:
 - Bild-Upload möglich
 - Bild kann gelöscht werden (Datei + DB-Eintrag)
+
+## Rechte
+- Root  sieht alles from user ( posts)
+- User sieht nur sein posts

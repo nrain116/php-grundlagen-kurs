@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="button-container">
                 <button type="submit" class="action-btn button-submit">&#x2714;</button>
-                <a href="../index.php" class="action-btn button-cancel">&#10007;</a>
+                <a href="cat_create.php" class="action-btn button-cancel">&#10007;</a>
             </div>
             <?php if (!empty($success)) : ?>
                 <p><?= $success ?></p>
