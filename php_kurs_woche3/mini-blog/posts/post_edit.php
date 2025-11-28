@@ -9,7 +9,7 @@ if ($id <= 0) {
 }
 
 $post = fetchPost($pdo, $id);
-$cats = fetchCat($pdo);
+$cats = fetchCategories($pdo);
 
 $error = '';
 $success = '';
@@ -127,8 +127,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="file" name="datei" accept="image/*">
             </label>
 
-            <button type="submit">Speichern</button>
-            <a href="../index.php" class="button">Abbrechen</a>
+            <div class="button-container">
+                <button type="submit" class="action-btn button-submit">&#x2714;</button>
+                <a href="../index.php" class="action-btn button-cancel">&#10007;</a>
+            </div>
+
         </form>
     </section>
 </main>

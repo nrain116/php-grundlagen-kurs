@@ -3,11 +3,10 @@
         <ul>
             <li><a href="<?= BASE_URL ?>index.php">Startseite</a></li>
             <?php if (isset($_SESSION['email']) && $_SESSION['email'] === 'root@root.com'): ?>
-                <li><a href="<?= BASE_URL ?>category/cat-create.php">Kategorie erstellen</a></li>
+                <li><a href="<?= BASE_URL ?>posts/post_create.php">Post</a></li>
+                <li><a href="<?= BASE_URL ?>category/cat_create.php">Kategorie</a></li>
             <?php endif; ?>
-            <?php if (!empty($_SESSION['email'])): ?>
-                <li><a href="<?= BASE_URL ?>password_change.php">Password ändern</a></li>
-            <?php else: ?>
+            <?php if (empty($_SESSION['email'])): ?>
                 <li><a href="<?= BASE_URL ?>user/register.php">Registrieren</a></li>
             <?php endif; ?>
         </ul>

@@ -59,8 +59,16 @@ function addCategory(PDO $pdo, string $name, string $desc)
     ]);
 }
 
+function fetchCategory(PDO $pdo, int $id): ?stdClass
+{
+    $stmt = $pdo->prepare('SELECT * FROM categories WHERE categ_id = :i');
+    $stmt->execute([':i' => $id]);
+    $post = $stmt->fetch(PDO::FETCH_OBJ); // fetch as object
+    return $post ?: null; // return null if not found
+}
 
-function fetchCat(PDO $pdo): array
+
+function fetchCategories(PDO $pdo): array
 {
     $sql = 'SELECT * FROM categories';
     return $pdo->query($sql)->fetchAll(PDO::FETCH_OBJ);
@@ -73,19 +81,34 @@ function getImage($img): string
 }
 
 
-// function fetchUserName(PDO $pdo, string $email): string {
-//      $stmt = $pdo->prepare('SELECT user FROM users WHERE users_email = :e');
-//     $stmt->execute([':e' => $email]);
-//     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-//     return $row ? (int)$row['users_id'] : null;
-// }
-
 function fetchCategoryName(PDO $pdo, int $catId): ?string
 {
     $stmt = $pdo->prepare('SELECT categ_name FROM categories WHERE categ_id = :id');
     $stmt->execute([':id' => $catId]);
     $name = $stmt->fetchColumn();
     return $name ?: null;
+}
+
+function deleteCat(PDO $pdo, int $id): void
+{
+    $stmt = $pdo->prepare('DELETE FROM categories WHERE categ_id = :id');
+    $stmt->execute([':id' => $id]);
+}
+
+function updateCategory(PDO $pdo, int $id, string $name, string $desc): void
+{
+    $stmt = $pdo->prepare('
+        UPDATE categories
+        SET categ_name = :n,
+            categ_desc = :d
+        WHERE categ_id = :id
+    ');
+
+    $stmt->execute([
+        ':n' => $name,
+        ':d'   => $desc,
+        ':id'  => $id
+    ]);
 }
 
 function deletePost(PDO $pdo, int $id): void

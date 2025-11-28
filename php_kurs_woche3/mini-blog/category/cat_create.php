@@ -7,7 +7,7 @@ $catName = $_POST['catName'] ?? '';
 $catDesc = $_POST['catDesc'] ?? '';
 $error = '';
 $success = '';
-$cats = fetchCat($pdo);
+$cats = fetchCategories($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic validation
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Optionally, clear the form fields
         $catName = '';
         $catDesc = '';
-        $cats = fetchCat($pdo);
+        $cats = fetchCategories($pdo);
     }
 }
 ?>
@@ -37,19 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         font-size: 0.95rem;
     ">
         <summary style="
-    cursor: pointer; 
-    font-weight: bold; 
-    font-size: 1.2rem; 
-    padding: 8px 12px; 
-    border-bottom: 1px solid #ddd;
-    background-color: #FFFFFF; 
-    color: white; 
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    text-align: center;
-    display: block; /* makes text-align work */
-    color: black;
-">
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 1.2rem; 
+            padding: 8px 12px; 
+            border-bottom: 1px solid #ddd;
+            background-color: #FFFFFF; 
+            color: white; 
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            text-align: center;
+            display: block; /* makes text-align work */
+            color: black;
+        ">
             Klick mich ! 👈
         </summary>
 
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         border: none;
                         cursor: pointer;
                         padding: 0;
-                    ">✎</button>
+                    ">&#x2714;</button>
 
                     <button type="reset"
                         style="
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         border: none;
                         cursor: pointer;
                         padding: 0;
-                    ">🗑</button>
+                    ">&#10007;</button>
                 </div>
             </form>
         </section>
@@ -110,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ">
         <thead>
             <tr>
-                <th style="padding: 10px; text-align: center; width: 120px">Header</th>
                 <th style="padding: 10px; text-align: center; width: 120px">Kategorie</th>
+                <th style="padding: 10px; text-align: center; width: 120px">Beschreibung</th>
                 <th style="padding: 10px; text-align: center; width: 120px;">Aktion</th>
             </tr>
         </thead>
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <td style="padding: 6px; text-align: center; white-space: nowrap;">
 
                     <!-- Edit button -->
-                    <a href="category/cat-edit.php?id=<?= $cat->categ_id ?>"
+                    <a href="cat_edit.php?id=<?= $cat->categ_id ?>"
                         style="
                 display: inline-flex;
                 justify-content: center;
@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </a>
 
                     <!-- Delete button -->
-                    <form action="inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
+                    <form action="../inc/_delete.inc.php" method="post" style="display: inline-flex; margin: 0;"
                         onsubmit="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
                         <input type="hidden" name="catId" value="<?= $cat->categ_id ?>">
                         <button type="submit"
@@ -160,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ">
                             🗑
                         </button>
+                        <input type="hidden" name="catId" value="<?= $cat->categ_id ?>">
                     </form>
 
                 </td>

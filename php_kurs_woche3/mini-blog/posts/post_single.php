@@ -40,6 +40,7 @@ $post = fetchPost($pdo, $id);
             <!-- Artikelinhalt -->
             <p><?= nl2br(htmlspecialchars($post->posts_content)) ?></p>
         </article>
+        <a href="post_create.php">Zurück</a>
     </section>
 
 </main>

@@ -408,3 +408,35 @@ button.inline-btn {
     transform: rotate(90deg);
     /* rotate arrow when open */
 }
+
+.button-container {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.action-btn {
+    display: inline-flex;
+    /* flex for centering icon/text */
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    /* for links */
+    color: white;
+    /* icon color */
+}
+
+.button-submit {
+    background-color: #007bff;
+}
+
+.button-cancel {
+    background-color: #d9534f;
+}

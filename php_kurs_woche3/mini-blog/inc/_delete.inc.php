@@ -11,6 +11,14 @@ $postId = (int)($_POST['postId'] ?? '');
 
 if ($postId) {
     deletePost($pdo, $postId);
+    header('Location: ../index.php');
+    exit;
 }
-header('Location: ../index.php');
-exit;
+
+
+$catId = (int)($_POST['catId'] ?? '');
+if ($catId) {
+    deleteCat($pdo, $catId);
+    header('Location: ../category/cat_create.php');
+    exit;
+}
