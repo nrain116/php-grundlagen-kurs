@@ -31,8 +31,7 @@ foreach ($posts as $post) {
 
 <main class="container">
     <?php if ($_SESSION): ?>
-        <p>Hallo <b><?= $user->users_forename ?></b>, willkommen zu deinem Blog!</p>
-
+        <p style="text-align: center;">Hallo <b><?= $user->users_forename ?></b>, willkommen zu deinem Blog!</p>
     <?php else: ?>
         <p> Einloggen und dein Mini-Blog starten</p>
     <?php endif; ?>
@@ -43,7 +42,7 @@ foreach ($posts as $post) {
         $borderClass = $categoryColors[$categoryName] ?? 'border-default';
         ?>
 
-        <section class="card" style="padding: 1rem 2.3rem 1rem 2.3rem;"> <!-- padding : top - right - buttom - left -->
+        <section class="card" style="padding: 1rem 2.3rem; width: 80%; margin: 1.5rem auto;"><!-- padding : top - right - buttom - left -->
             <article>
                 <div style="padding-bottom: 0.5rem; padding-left:0.5rem;"><strong><?= htmlspecialchars($post->posts_header) ?></strong></div>
                 <div class="post-row">
