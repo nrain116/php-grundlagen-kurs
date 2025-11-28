@@ -605,3 +605,34 @@ button.inline-btn {
     color: #555;
     background-color: #f9f9f9;
 }
+
+html {
+    height: 100%;
+    background-image: url("../asset/background.jpg");
+    /* update */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* optional */
+}
+
+body {
+    height: 100%;
+    background: transparent;
+    /* make sure body doesn’t hide html background */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-image: url("../asset/header.jpg");
+    /* change file */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px 0;
+    /* space inside header */
+    color: white;
+    /* optional */
+}

@@ -27,14 +27,14 @@ require_once __DIR__ . '/functions.inc.php';
 
 
     <!-- Example icon -->
-    <link rel="icon" type="image/svg+xml" href="<?= BASE_URL ?>icons/blog.svg">
+    <link rel="icon" type="image/svg+xml" href="<?= BASE_URL ?>asset/blog.svg">
 </head>
 
 <body>
     <?php include_once '_nav.inc.php' ?>
     <header>
         <div class="container">
-            <h1 style="text-align: center;"><?= $pageTitle ?? 'Mini-Blog' ?></h1>
+            <h1 style="text-align: center; color: black;"><?= $pageTitle ?? 'Mini-Blog' ?></h1>
 
         </div>
     </header>
